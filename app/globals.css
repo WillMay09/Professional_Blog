@@ -2,12 +2,28 @@
 
 :root {
   --background: #ffffff;
+  --background-translucent: rgba(255, 255, 255, 0.8);
   --foreground: #18181b;
+  --foreground-muted: #71717a;
+  --foreground-subtle: #52525b;
+  --accent: #18181b;
+  --accent-foreground: #ffffff;
+  --border: #e4e4e7;
+  --border-muted: #f4f4f5;
+  --border-hover: #a1a1aa;
 }
 
 @theme inline {
   --color-background: var(--background);
+  --color-background-translucent: var(--background-translucent);
   --color-foreground: var(--foreground);
+  --color-foreground-muted: var(--foreground-muted);
+  --color-foreground-subtle: var(--foreground-subtle);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-border: var(--border);
+  --color-border-muted: var(--border-muted);
+  --color-border-hover: var(--border-hover);
   --font-sans: var(--font-inter);
   --font-mono: var(--font-jetbrains-mono);
 }
@@ -19,6 +35,6 @@ body {
 }
 
 ::selection {
-  background-color: #f4f4f5;
-  color: #18181b;
+  background-color: var(--border-muted);
+  color: var(--foreground);
 }

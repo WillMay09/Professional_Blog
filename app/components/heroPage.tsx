@@ -74,13 +74,13 @@ export default function HeroPage() {
               </div>
             </div>
 
-            <div className="flex flex-col mt-12 gap-5" >
-                <h1>Newsletter Updates</h1>
+            <div className="flex flex-col mt-12 gap-5">
+              <h1>Newsletter Updates</h1>
               <form
                 className="flex flex-col sm:flex-row gap-4 mb-4"
                 onSubmit={(e) => {
                   e.preventDefault();
-                 // submitEmail();
+                  // submitEmail();
                 }}
               >
                 <input
@@ -92,10 +92,9 @@ export default function HeroPage() {
 
                 <button
                   type="submit"
-                  disabled={status === "loading"}
                   className="flex-1 bg-background text-foreground px-8 h-12 rounded-lg border border-accent font-medium glow-accent hover:scale-[1.02] transition-transform disabled:opacity-50"
                 >
-                  {status === "loading" ? "Sending..." : "Sign Up"}
+                  Subscribe
                 </button>
               </form>
             </div>
@@ -116,36 +115,6 @@ export default function HeroPage() {
           <div className="absolute right-0 top-1/4 h-32 w-1 bg-cyan-500 hidden lg:block"></div>
         </section>
       </main>
-
-      {/* Blog Feed / Work List */}
-      <section className="bg-zinc-50/30">
-        <div className="grid grid-cols-1 lg:grid-cols-12">
-          {/* Section Label */}
-          <div className="lg:col-span-3 p-8 lg:p-12 border-r border-b lg:border-b-0 border-zinc-100 flex items-start bg-white lg:bg-transparent">
-            <h3 className="text-xl font-medium tracking-tight">
-              Recent Writing
-            </h3>
-          </div>
-
-          {/* Articles Grid */}
-          <div className="lg:col-span-9">
-            <ArticleRow
-              date="OCT 24"
-              title="Migrating to Server Components"
-              excerpt="A deep dive into the performance implications and structural changes required for React 18."
-              tag="Engineering"
-              href="/blog/server-components"
-            />
-            <ArticleRow
-              date="SEP 12"
-              title="Minimalism in Digital Interfaces"
-              excerpt="Why removing features is often more effective than adding them. A case study on white space."
-              tag="Design"
-              href="/blog/minimalism-interfaces"
-            />
-          </div>
-        </div>
-      </section>
     </>
   );
 

@@ -2,8 +2,11 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import {sendEmailHook} from "../hooks/sendEmailHook";
 
-export default function HeroPage() {
+export function HeroPage() {
+
+  const {email, isLoading, sendEmail, setEmail} = sendEmailHook();
   return (
     <>
       {/* Hero Section */}
@@ -80,12 +83,14 @@ export default function HeroPage() {
                 className="flex flex-col sm:flex-row gap-4 mb-4"
                 onSubmit={(e) => {
                   e.preventDefault();
-                  // submitEmail();
+                  sendEmail(e);
                 }}
               >
                 <input
                   type="email"
                   placeholder="Enter Email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   required
                   className="flex-3 bg-card-dark/50 border border-dark text-primary-dark placeholder:text-secondary-dark h-12 backdrop-blur-sm rounded-lg px-4 focus:outline-none focus:ring-2 focus:ring-[rgb(var(--color-accent))] focus:border-accent transition-all"
                 />
@@ -93,8 +98,9 @@ export default function HeroPage() {
                 <button
                   type="submit"
                   className="flex-1 bg-background text-foreground px-8 h-12 rounded-lg border border-accent font-medium glow-accent hover:scale-[1.02] transition-transform disabled:opacity-50"
+                  disabled={isLoading === "loading"}
                 >
-                  Subscribe
+                  {isLoading === "loading" ? "Submitting..." : "Subscribe"}
                 </button>
               </form>
             </div>

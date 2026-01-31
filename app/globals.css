@@ -26,6 +26,8 @@
   --color-border-hover: var(--border-hover);
   --font-sans: var(--font-inter);
   --font-mono: var(--font-jetbrains-mono);
+  --font-poppins: var(--font-poppins);
+  --font-cormorantGaramond: var(--font-cormorant-garamond);
 }
 
 body {
@@ -37,4 +39,34 @@ body {
 ::selection {
   background-color: var(--border-muted);
   color: var(--foreground);
+}
+
+.article{
+  @apply flex flex-col gap-3 font-poppins text-lg tracking-wide mb-20; 
+
+}
+
+.article > h1{
+
+  @apply font-cormorantGaramond text-4xl text-center tracking-tight;
+}
+
+.article > h2{
+  @apply font-cormorantGaramond text-3xl tracking-tight;
+}
+.article > ol{
+  @apply list-decimal flex flex-col mx-10 gap-2;
+}
+
+.article > ul{
+  @apply list-disc flex flex-col mx-10 gap-2;
+}
+
+.article > pre{
+
+  @apply bg-neutral-950 text-neutral-50 p-5 overflow-scroll;
+}
+
+.article >blockquote{
+  @apply border-l-4 border-neutral-300/50 pl-4 italic text-neutral-600;
 }

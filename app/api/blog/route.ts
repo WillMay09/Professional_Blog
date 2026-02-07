@@ -48,8 +48,11 @@ export const getSortedAriticles = (): ArticleItem[] => {
 
 
 export const getArticleData = (id: string) =>{
-
-  const fullPath = path.join(articlesDirectory, `${id}.mdx`);
+  // Try .mdx first, then fall back to .md
+  let fullPath = path.join(articlesDirectory, `${id}.mdx`);
+  if (!fs.existsSync(fullPath)) {
+    fullPath = path.join(articlesDirectory, `${id}.md`);
+  }
   const fileContents = fs.readFileSync(fullPath, "utf-8");
 
   const matterResult = matter(fileContents);

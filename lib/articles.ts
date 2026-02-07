@@ -1,7 +1,6 @@
 import fs from "fs";
 
 import matter from "gray-matter";
-import { NextResponse } from "next/server";
 import path from "path";
 import moment from "moment";
 

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { getSortedAriticles } from "@/app/api/blog/route";
+import { getSortedAriticles } from "@/lib/articles";
 
 export default function BlogPage() {
   console.log(getSortedAriticles());

@@ -85,11 +85,10 @@ My current learning focus areas:
 - Position aggregation across books
 - Market data integration for risk
 
-**Data Engineering Fundamentals**
-- Event streaming patterns (Kafka)
-- Data pipeline architecture
+**Automation and Scripting**
+- Python scripting for batch processes
+- Red Hat Ansible automations for code deployments
 - SQL optimization for large datasets
-- Batch vs. streaming processing tradeoffs
 
 **Modern Infrastructure**
 - Cloud platforms (AWS)

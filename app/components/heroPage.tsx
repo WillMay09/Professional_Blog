@@ -1,146 +1,152 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { sendEmailHook } from "../hooks/sendEmailHook";
 
 export function HeroPage() {
   const { email, isLoading, sendEmail, setEmail } = sendEmailHook();
+
   return (
-    <>
-      <div className="min-h-screen flex flex-col">
-        {/* Hero Section */}
-        <div className="flex-1 grid grid-cols-2 items-center">
-          {/* Left Content */}
-          <div className="flex flex-col justify-center px-16 py-12">
-            <div className="max-w-xl">
-              <h1 className="text-6xl font-bold mb-6">William Mayhood</h1>
-
-              <div className="mb-4">
-                <p className="text-xl font-semibold text-gray-900">
-                  Production Support/Endur Developer
-                </p>
-                <p className="text-gray-500">Commodities Trading</p>
-              </div>
-
-              <p className="text-gray-600 leading-relaxed mb-12">
-                Navigating complex distributed systems in the modern financial
-                world. Every line of code is crafted with precision,
-                prioritizing scalability, performance, and the tactile
-                relationship between user and interface.
-              </p>
-
-              {/* Stats */}
-              <div className="grid grid-cols-3 gap-8 mb-12">
-                <div>
-                  <p className="text-xs text-blue-600 font-semibold uppercase tracking-wide mb-1">
-                    Commits
-                  </p>
-                  <p className="text-3xl font-bold">342</p>
-                </div>
-                <div>
-                  <p className="text-xs text-blue-600 font-semibold uppercase tracking-wide mb-1">
-                    Stack
-                  </p>
-                  <p className="text-3xl font-bold">JWS</p>
-                </div>
-                <div>
-                  <p className="text-xs text-blue-600 font-semibold uppercase tracking-wide mb-1">
-                    Availability
-                  </p>
-                  <p className="text-3xl font-bold">1/4</p>
-                </div>
-              </div>
-
-              {/* Newsletter */}
-              <div>
-                <p className="text-sm font-semibold mb-3">Newsletter Updates</p>
-                <form
-                  className="flex gap-3"
-                  onSubmit={(e) => {
-                    e.preventDefault();
-                    sendEmail(e);
-                  }}
-                >
-                  <input
-                    type="email"
-                    placeholder="Enter Email"
-                    className="flex-1 px-4 py-2.5 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                  />
-                  <button className="px-8 py-2.5 bg-white border border-gray-300 rounded-md hover:bg-gray-50 transition-colors font-medium" disabled={isLoading === "loading"} type="submit">
-                    {isLoading === "loading" ? "Submitting..." : "Subscribe"}
-                  </button>
-                </form>
-              </div>
-            </div>
-          </div>
-
-          {/* Right Image */}
-          <div className="h-full flex items-center justify-center bg-gray-50 p-8">
-            <div className="relative w-full h-full max-h-[600px] overflow-hidden rounded-lg shadow-2xl border-4 border-black">
-              ///Image
-              <Image
-                src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=2069&auto=format&fit=crop"
-                alt="Coding Environment"
-                fill
-                className="object-cover grayscale transition-transform duration-1000 ease-out group-hover:scale-105"
-                priority
-              />
-            </div>
-          </div>
-        </div>
-
-        {/* Scroll Indicator */}
-        {/* <div className="absolute bottom-8 left-8">
-          <div className="w-10 h-10 rounded-full bg-black flex items-center justify-center cursor-pointer hover:bg-gray-800 transition-colors">
-            <span className="text-white text-lg">↓</span>
-          </div>
-        </div> */}
-      </div>
-    </>
-  );
-
-
-  function ArticleRow({
-    date,
-    title,
-    excerpt,
-    tag,
-    href,
-  }: {
-    date: string;
-    title: string;
-    excerpt: string;
-    tag: string;
-    href: string;
-  }) {
-    return (
-      <Link
-        href={href}
-        className="group block border-b border-zinc-100 hover:bg-white transition-colors"
-      >
-        <div className="grid grid-cols-1 md:grid-cols-12 p-8 lg:p-10 items-center gap-6">
-          <div className="md:col-span-2 text-base text-zinc-400 font-normal font-mono">
-            {date}
-          </div>
-          <div className="md:col-span-7">
-            <h4 className="text-2xl font-medium tracking-tight text-zinc-900 group-hover:text-cyan-700 transition-colors mb-2">
-              {title}
-            </h4>
-            <p className="text-lg text-zinc-500 font-light line-clamp-1">
-              {excerpt}
-            </p>
-          </div>
-          <div className="md:col-span-3 flex justify-end">
-            <span className="px-3 py-1 rounded-full border border-zinc-200 text-xs font-medium uppercase tracking-wide text-zinc-500 group-hover:border-zinc-900 group-hover:text-zinc-900 transition-all">
-              {tag}
+    <div>
+      {/* ─── Dark hero ─── */}
+      <section className="min-h-[88vh] bg-dark flex flex-col lg:grid lg:grid-cols-[3fr_2fr]">
+        {/* Left: text */}
+        <div className="flex flex-col justify-between px-8 lg:px-16 pt-16 pb-12">
+          {/* Top label */}
+          <div className="flex items-center justify-between">
+            <span className="text-[10px] font-mono uppercase tracking-[0.25em] text-accent">
+              Production Support · ETRM Developer
+            </span>
+            <span className="text-[10px] font-mono text-foreground-inverse-muted hidden sm:block">
+              Houston, TX · 2026
             </span>
           </div>
+
+          {/* Headline */}
+          <div className="py-12 lg:py-16">
+            <h1 className="font-cormorantGaramond font-bold text-5xl sm:text-6xl lg:text-7xl xl:text-8xl leading-[0.93] tracking-tight text-foreground-inverse">
+              Engineering
+              <br />
+              <span className="italic font-normal text-foreground-inverse/75">
+                at the edge
+              </span>
+              <br />
+              of finance &amp;
+              <br />
+              technology
+              <span className="text-accent">.</span>
+            </h1>
+
+            <p className="mt-8 text-foreground-inverse-muted text-base lg:text-lg leading-relaxed max-w-md font-light">
+              Production support engineer navigating the complexity of
+              commodities trading systems — and the personal discipline required
+              to grow within it.
+            </p>
+          </div>
+
+          {/* Newsletter */}
+          <div className="border-t border-dark-border pt-8">
+            <div className="mb-5">
+              <p className="text-[10px] font-mono uppercase tracking-[0.2em] text-foreground-inverse-muted mb-1">
+                Weekly Dispatch
+              </p>
+              <p className="text-sm text-foreground-inverse-muted/70">
+                Trading technology, systems thinking &amp; the pursuit of
+                mastery.
+              </p>
+            </div>
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                sendEmail(e);
+              }}
+              className="flex gap-2"
+            >
+              <input
+                type="email"
+                placeholder="your@email.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                className="flex-1 max-w-xs bg-dark-surface border border-dark-border text-foreground-inverse placeholder:text-foreground-inverse-muted/30 px-4 py-3 text-sm font-mono focus:outline-none focus:border-accent transition-colors"
+              />
+              <button
+                type="submit"
+                disabled={isLoading === "loading"}
+                className="px-6 py-3 bg-accent hover:bg-accent-hover text-white text-sm font-medium transition-colors disabled:opacity-50 whitespace-nowrap cursor-pointer"
+              >
+                {isLoading === "loading" ? "..." : "Subscribe"}
+              </button>
+            </form>
+          </div>
         </div>
-      </Link>
-    );
-  }
+
+        {/* Right: image */}
+        <div className="hidden lg:block relative">
+          <Image
+            src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=2069&auto=format&fit=crop"
+            alt="Coding environment"
+            fill
+            className="object-cover grayscale opacity-50"
+            priority
+          />
+          {/* Gradient blends image into the dark left panel */}
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(to right, #0f1117 0%, rgba(15,17,23,0.45) 40%, transparent 100%)",
+            }}
+          />
+        </div>
+      </section>
+
+      {/* ─── Three pillars ─── */}
+      <section className="bg-surface border-b border-border">
+        <div className="max-w-7xl mx-auto px-8 lg:px-16">
+          <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-border">
+            <Pillar
+              index="01"
+              label="ETRM &amp; Trading Systems"
+              description="Endur, trade lifecycles, settlement flows, and the enterprise architecture that powers commodities markets."
+            />
+            <Pillar
+              index="02"
+              label="Distributed Systems"
+              description="Production incident response, system integration patterns, and building intuition for complex failure modes at scale."
+            />
+            <Pillar
+              index="03"
+              label="The Discipline to Grow"
+              description="The habits, mental frameworks, and relentless consistency required to master a demanding technical domain."
+            />
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+function Pillar({
+  index,
+  label,
+  description,
+}: {
+  index: string;
+  label: string;
+  description: string;
+}) {
+  return (
+    <div className="py-10 px-8 first:pl-0 last:pr-0">
+      <p className="text-[10px] font-mono text-foreground-subtle mb-4">
+        {index}
+      </p>
+      <h3 className="font-cormorantGaramond text-2xl text-foreground mb-3 tracking-tight">
+        <span dangerouslySetInnerHTML={{ __html: label }} />
+      </h3>
+      <p className="text-sm text-foreground-muted leading-relaxed">
+        {description}
+      </p>
+    </div>
+  );
 }

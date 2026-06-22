@@ -28,8 +28,9 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Atlas | Tech & Engineering Portfolio",
-  description: "System Architecture & Full Stack Development Portfolio",
+  title: "William Mayhood | Production Support & ETRM Developer",
+  description:
+    "Production support engineer in commodities trading. Writing on ETRM systems, distributed infrastructure, and the discipline to grow within demanding technical environments.",
 };
 
 export default function RootLayout({

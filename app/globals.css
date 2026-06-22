@@ -2,25 +2,46 @@
 
 :root {
   --background: #ffffff;
-  --background-translucent: rgba(255, 255, 255, 0.8);
-  --foreground: #18181b;
-  --foreground-muted: #71717a;
-  --foreground-subtle: #52525b;
-  --accent: #18181b;
+  --background-translucent: rgba(255, 255, 255, 0.94);
+  --surface: #fafaf8;
+
+  --dark: #0f1117;
+  --dark-surface: #161b27;
+  --dark-border: #1e2d40;
+
+  --foreground: #0f1117;
+  --foreground-muted: #6b7280;
+  --foreground-subtle: #9ca3af;
+
+  --foreground-inverse: #f1f5f9;
+  --foreground-inverse-muted: #94a3b8;
+
+  --accent: #d97706;
   --accent-foreground: #ffffff;
-  --border: #e4e4e7;
-  --border-muted: #f4f4f5;
-  --border-hover: #a1a1aa;
+  --accent-hover: #b45309;
+  --accent-light: #fffbeb;
+
+  --border: #e5e7eb;
+  --border-muted: #f3f4f6;
+  --border-hover: #9ca3af;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-background-translucent: var(--background-translucent);
+  --color-surface: var(--surface);
+  --color-dark: var(--dark);
+  --color-dark-surface: var(--dark-surface);
+  --color-dark-border: var(--dark-border);
   --color-foreground: var(--foreground);
   --color-foreground-muted: var(--foreground-muted);
   --color-foreground-subtle: var(--foreground-subtle);
+  --color-foreground-inverse: var(--foreground-inverse);
+  --color-foreground-inverse-muted: var(--foreground-inverse-muted);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-light: var(--accent-light);
   --color-border: var(--border);
   --color-border-muted: var(--border-muted);
   --color-border-hover: var(--border-hover);
@@ -37,36 +58,85 @@ body {
 }
 
 ::selection {
-  background-color: var(--border-muted);
+  background-color: #fef3c7;
   color: var(--foreground);
 }
 
-.article{
-  @apply flex flex-col gap-3 font-poppins text-lg tracking-wide mb-20; 
+/* ─── Article / Blog post styles ─── */
 
+.article {
+  @apply flex flex-col gap-5 mb-20;
 }
 
-.article > h1{
-
-  @apply font-cormorantGaramond text-4xl text-center tracking-tight;
+.article > h1 {
+  @apply font-cormorantGaramond text-5xl tracking-tight mt-6 mb-2;
 }
 
-.article > h2{
-  @apply font-cormorantGaramond text-3xl tracking-tight;
-}
-.article > ol{
-  @apply list-decimal flex flex-col mx-10 gap-2;
+.article > h2 {
+  @apply font-cormorantGaramond text-4xl tracking-tight mt-10 mb-1;
 }
 
-.article > ul{
-  @apply list-disc flex flex-col mx-10 gap-2;
+.article > h3 {
+  @apply font-cormorantGaramond text-2xl tracking-tight mt-6;
+  font-weight: 600;
 }
 
-.article > pre{
-
-  @apply bg-neutral-950 text-neutral-50 p-5 overflow-scroll;
+.article > p {
+  @apply text-foreground-muted text-base font-poppins;
+  line-height: 2;
 }
 
-.article >blockquote{
-  @apply border-l-4 border-neutral-300/50 pl-4 italic text-neutral-600;
+.article > ol {
+  @apply list-decimal ml-6 text-foreground-muted text-base font-poppins;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  line-height: 1.75;
+}
+
+.article > ul {
+  @apply list-disc ml-6 text-foreground-muted text-base font-poppins;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  line-height: 1.75;
+}
+
+.article > pre {
+  @apply bg-neutral-950 text-neutral-100 p-6 rounded-xl font-mono text-sm;
+  overflow-x: auto;
+  line-height: 1.65;
+}
+
+.article > blockquote {
+  border-left: 4px solid rgba(217, 119, 6, 0.45);
+  background: var(--accent-light);
+  @apply pl-6 italic text-foreground-muted py-4 pr-4;
+  border-radius: 0 6px 6px 0;
+}
+
+.article a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 0.15s ease;
+}
+
+.article a:hover {
+  color: var(--accent-hover);
+}
+
+.article strong {
+  color: var(--foreground);
+  font-weight: 600;
+}
+
+.article img {
+  @apply w-full rounded-xl;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  margin: 0.5rem 0;
+}
+
+.article > p > img {
+  width: 100%;
 }

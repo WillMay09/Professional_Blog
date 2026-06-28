@@ -59,22 +59,30 @@ export async function POST(request: Request) {
       subject: "Welcome to the Newsletter",
       html: `<p>Thank you for subscribing to our newsletter!</p>`,
     });
-    console.log(`User email results: ${userEmailResponse}`);
+    if (userEmailResponse.error) {
+      console.error("Resend welcome email error:", userEmailResponse.error);
+    }
 
     //notification email to my inbox
     const notificationEmailResponse = await resend.emails.send({
-      from: NOTIFICATION_EMAIL,
+      from: FROM_EMAIL,
       to: NOTIFICATION_EMAIL,
       subject: "New Newsletter Subscriber",
       html: `<p>New subscriber: ${email}</p>`,
     });
-    console.log(`Notification email results: ${notificationEmailResponse}`);
+    if (notificationEmailResponse.error) {
+      console.error(
+        "Resend notification email error:",
+        notificationEmailResponse.error,
+      );
+    }
 
     return NextResponse.json(
       { message: "Email sent successfully" },
       { status: 200 },
     );
   } catch (error) {
+    console.error("Contact route error:", error);
     return NextResponse.json(
       { message: "Error sending email" },
       { status: 500 },

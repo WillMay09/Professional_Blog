@@ -11,12 +11,12 @@ const NAV_LINKS = [
 
 const CONNECT_LINKS = [
   {
-    href: "https://linkedin.com/in/william-mayhood",
+    href: "https://www.linkedin.com/in/william-mayhood-71932a238/",
     label: "LinkedIn",
     external: true,
   },
   {
-    href: "https://github.com/wmayhood",
+    href: "https://github.com/WillMay09",
     label: "GitHub",
     external: true,
   },

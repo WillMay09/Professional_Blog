@@ -24,14 +24,14 @@ Here's roughly what I had:
 
 ```java
 class MarketDataProvider {
-    // data the market gave me
+    // data sourced from the market
     Map<Commodity, Double>            spotPrices;
     Map<Commodity, PriceCurve>        forwardCurves;
     Map<Commodity, VolatilitySurface> volSurfaces;
     Map<Tenor, Double>                riskFreeRates;
     Map<Commodity, TimeSeries>        historicalData;
 
-    // things I calculate
+    // computed data
     double getForwardPrice(Commodity c, LocalDate date) { ... }
     double getVolatility(Commodity c, double strike, ...) { ... }
     double getRiskFreeRate(Tenor t) { ... }

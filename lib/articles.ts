@@ -5,7 +5,9 @@ import path from "path";
 import moment from "moment";
 
 import { remark } from "remark";
-import html from "remark-html";
+import remarkRehype from "remark-rehype";
+import rehypeHighlight from "rehype-highlight";
+import { toHtml } from "hast-util-to-html";
 
 type ArticleItem = {
   id: string;
@@ -56,10 +58,13 @@ export const getArticleData = (id: string) =>{
 
   const matterResult = matter(fileContents);
   
-  const processedContent = remark()
-    .use(html)
-    .processSync(matterResult.content);
-  const contentHtml = processedContent.toString();
+  const processor = remark()
+    .use(remarkRehype)
+    .use(rehypeHighlight);
+  const mdast = processor.parse(matterResult.content);
+  const hast = processor.runSync(mdast);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const contentHtml = toHtml(hast as any);
 
   return {
     id,
